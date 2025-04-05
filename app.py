@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
@@ -13,8 +14,9 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
+    role = db.Column(db.String(50), nullable=False)
 
-@app.before_first_request
+@app.before_request
 def create_tables():
     db.create_all()
 
@@ -28,10 +30,15 @@ def get_users():
 @app.route('/users', methods=['POST'])
 def create_user():
     data = request.get_json()
-    new_user = User(name=data['name'], email=data['email'])
+    new_user = User(name=data['name'], email=data['email'], role=data['role'])
     db.session.add(new_user)
     db.session.commit()
-    return jsonify({'id': new_user.id, 'name': new_user.name, 'email': new_user.email}), 201
+    return jsonify({'id': new_user.id, 'name': new_user.name, 'email': new_user.email, 'role': new_user.role}), 201
+
+@app.route('/')
+def index():
+    return render_template('login.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
+
