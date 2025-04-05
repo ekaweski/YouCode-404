@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+
+<body bgcolor="light green">
+
+<h2>Login</h2>
+
+<form action="/form_login" method="post">
+    Username:<br>
+    <input type="text" name="username" required><br><br>
+
+    Password: <br>
+    <input type ="password" name="password" required><br><br>
+
+    Type of user: <br>
+    <label for="rcipient">
+        <input type="radio" id="recipient" name="user_choice" value="recipient" required>
+        Recipient
+    </label><br><br>
+
+    <label for="donor">
+        <input type="radio" id="donor" name="user_choice" value="donor">
+        Donor
+    </label><br><br>
+
+<input type="submit" Value="Login">
+</form>
+
+<h1>{{info}}</h1>
+
+</body>
+</html>
+
+
