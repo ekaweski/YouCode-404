@@ -1,44 +1,30 @@
-from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, request, jsonify, render_template
+from flask import Flask,request,render_template
 
 app = Flask(__name__)
 
-# Configure SQLite database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///website.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-
-# Define the User model
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(100), unique=True, nullable=False)
-    role = db.Column(db.String(50), nullable=False)
-
-@app.before_request
-def create_tables():
-    db.create_all()
-
-# Route to get all users
-@app.route('/users', methods=['GET'])
-def get_users():
-    users = User.query.all()
-    return jsonify([{'id': user.id, 'name': user.name, 'email': user.email} for user in users])
-
-# Route to create a new user
-@app.route('/users', methods=['POST'])
-def create_user():
-    data = request.get_json()
-    new_user = User(name=data['name'], email=data['email'], role=data['role'])
-    db.session.add(new_user)
-    db.session.commit()
-    return jsonify({'id': new_user.id, 'name': new_user.name, 'email': new_user.email, 'role': new_user.role}), 201
-
 @app.route('/')
-def index():
-    return render_template('login.html')
+def hello_world():
+    return render_template("login.html")
+database={'ella':'123','madi':'123','yuzuki':'123'}
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route('/form_login',methods=['POST','GET'])
+def login():
+    username1 = request.form['username']
+    password1 = request.form['password']
+    user_choice1 = request.form['user_choice']
 
+    if email1 not in database:
+        return render_template('login.html',info='Invalid User')
+    else:
+
+        if database[email1]!=password1:
+            return render_template('login.html',info='Invalid Password')
+        
+        else:
+            if user_choice =='recipient':
+                return render_template('home_recipient.html',name=username1)
+            else:
+                return render_template('home_donor.html',name=username1)
+
+if __name__ == 'main':
+    app.run()
