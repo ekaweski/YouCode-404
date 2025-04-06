@@ -46,7 +46,7 @@ console.log({{ postid }});
       <a href="{{ url_for('recipient', post_id=prev_post.id) }}"><button class="back-btn">&#8592;</button></a>
     {% endif %}
 
-      <button class="munch-btn">Munch!</button></a>
+      <a><button class="munch-btn">Munch!</button></a>
 
       {% if next_post %}
         <a href="{{ url_for('recipient', post_id=next_post.id) }}"><button class="next-btn">&#8594;</button></a>
