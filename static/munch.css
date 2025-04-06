@@ -19,11 +19,10 @@ body {
   
   .header-buttons {
     display: flex;
-    gap: 10px;
-    align-items: center;
+    gap: 10px;  /* Adds space between the button and the icon */
+    align-items: center;  /* Ensures the button and icon align vertically */
   }
   
-  /* Pill-style buttons */
   .logout-btn {
     background-color: #ffffff;
     color: black;
@@ -34,25 +33,23 @@ body {
     font-size: 0.95rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    text-decoration: none; /* Ensures no underline on the link */
   }
   
   .logout-btn:hover {
     background-color: #88a891;
   }
   
-  /* Circular icon button */
-  .icon-btn, .icon {
-    width: 40px;
+  .icon {
+    width: 40px; /* Size of the icon */
     height: 40px;
-    padding-bottom: 4px;
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-    background-color: #102913; 
-     margin-left: 8px; /* Space between the text and the icon */
-
-  
   }
+  
+  .icon img {
+    width: 100%;
+    height: auto;
+  }
+  
   
   
   main {
