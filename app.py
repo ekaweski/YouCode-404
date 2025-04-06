@@ -11,7 +11,6 @@ database={'ella':'123','madi':'123','yuzuki':'123'}
 def login():
     username1 = request.form['username']
     password1 = request.form['password']
-    user_choice1 = request.form['user_choice']
 
     if username1 not in database:
         return render_template('login.html',info='Invalid User')
@@ -21,10 +20,7 @@ def login():
             return render_template('login.html',info='Invalid Password')
         
         else:
-            if user_choice1 =='recipient':
-                return render_template('home_recipient.html',name=username1)
-            else:
-                return render_template('home_donor.html',name=username1)
+             return render_template('home_donor.html',name=username1)
 
 if __name__ == '__main__':
     app.run(debug=True)

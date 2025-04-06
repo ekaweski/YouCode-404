@@ -15,6 +15,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 /* #front {
@@ -28,14 +29,19 @@ body {
   background-image: url('pexels-badesaba-16002325.jpg'); 
   background-size: cover;
   background-position: center;
+  max-width: 35vw;
 } 
 
 h1 {
-  font-family: 'Sansita One', serif;
   font-size: 3rem;
   color: #173c25;
   margin-bottom: 0px;
+  font-family: "Sansita", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  margin: 10px;
 }
+
 
 .login-card {
   background-color: #4d6b52;
@@ -93,8 +99,11 @@ h1 {
 
 .create-account button {
   margin-top: 5px;
-  padding: 6px 14px;
+  padding: 6px 4px;
+  margin: 0px 10px;
   border: none;
+  width: 160px;
+  height: 44px;
   background-color: white;
   border-radius: 20px;
   font-weight: bold;
