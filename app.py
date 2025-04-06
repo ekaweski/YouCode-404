@@ -21,6 +21,15 @@ class Post(db.Model):
     items = db.Column(db.Text)
     contact = db.Column(db.String(150))
 
+class PostForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    location = StringField('Location', validators=[DataRequired()])
+    date = StringField('Date', validators=[DataRequired()])
+    time = StringField('Time', validators=[DataRequired()])
+    items = TextAreaField('Items', validators=[DataRequired()])
+    contact = StringField('Contact Info', validators=[DataRequired()])
+    submit = SubmitField('Post')
+
 # Temporary in-memory user database
 database = {
     'ella': {'password': '123', 'role': 'donor'},
@@ -66,15 +75,6 @@ def register():
 
     return redirect(url_for('hello_world'))
 
-class PostForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
-    location = StringField('Location', validators=[DataRequired()])
-    date = StringField('Date', validators=[DataRequired()])
-    time = StringField('Time', validators=[DataRequired()])
-    items = TextAreaField('Items (comma-separated)', validators=[DataRequired()])
-    contact = StringField('Contact Info', validators=[DataRequired()])
-    submit = SubmitField('Create Post')
-
 @app.route('/donor', methods=['GET', 'POST'])
 def donor():
     form = PostForm()
@@ -100,7 +100,14 @@ def recipient(post_id):
     next_post = Post.query.filter(Post.id > post_id).order_by(Post.id.asc()).first()
     prev_post = Post.query.filter(Post.id < post_id).order_by(Post.id.desc()).first()
 
-    return render_template('single_post.html', post=post, next_post=next_post, prev_post=prev_post)
+    return render_template('home_recipient.html', post=post, next_post=next_post, prev_post=prev_post)
+
+@app.route('/recipient')
+def recipient_redirect():
+    first_post = Post.query.order_by(Post.id.asc()).first()
+    if first_post:
+        return redirect(url_for('recipient', post_id=first_post.id))
+    return "No posts available."
 
 
 if __name__ == '__main__':
