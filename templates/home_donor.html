@@ -15,35 +15,44 @@
     </div>
   </header>
 
-  <main>
-    <div class="card">
-      <div class="post-info">
-        <h1>Post Name</h1>
-        <p><strong>Location:</strong> 6133 University Blvd, Vancouver, BC V6T 1Z1</p>
-        <p><strong>Date:</strong> March 17, 2025</p>
-        <p><strong>Time:</strong> 6:00–7:00 pm</p>
-        <p><strong>Items Available:</strong></p>
-        <ul>
-          <li>Carrots</li>
-          <li>Peas</li>
-          <li>Honey</li>
-          <li>Grapes</li>
-          <li>Corn</li>
-          <li>Potatoes</li>
-          <li>Tomatoes</li>
-          <li>Matcha</li>
-        </ul>
-        <p><strong>Point of Contact:</strong> janedoe@foodmail.com or (431)-345-9008</p>
+  <main class="new-post-container">
+    <h1>New post</h1>
+    <div class="post-form">
+      <div class="image-upload">
+        <label for="image-upload">
+          <div class="upload-placeholder">
+            <span class="upload-icon">+</span>
+            <span class="upload-text">Upload Image</span>
+          </div>
+        </label>
+        <input type="file" id="image-upload" hidden>
       </div>
-      <div class="image-box">
-        <img src="{{ url_for('static', filename='post-image.png') }}" alt="Post Image">
+  
+      <div class="post-details">
+        <label>
+          Post Name
+          <input type="text" placeholder="What...">
+        </label>
+        <label>
+          Date
+          <input type="text" placeholder="dd/mm/yyyy">
+        </label>
+        <label>
+          Time
+          <input type="text" placeholder="x:xx ">
+        </label>
+        <label>
+          Location
+          <input type="text" placeholder="Where...">
+        </label>
+        <label>
+          Items Available
+          <textarea placeholder="Info..."></textarea>
+        </label>
       </div>
     </div>
-    <div class="nav-buttons">
-      <button class="back-btn">&#8592;</button>
-      <button class="munch-btn">Munch!</button>
-      <button class="next-btn">&#8594;</button>
-    </div>
+    <button class="create-btn">Create</button>
   </main>
+  
 </body>
 </html>
