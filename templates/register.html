@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+</head>
+<body>
+  <div class="register-container">
+    <h1>Create your account</h1>
+    <form action="/register" method="post">
+      <label>Full Name</label>
+      <input type="text" name="full_name" required />
+
+      <label>Username</label>
+      <input type="text" name="username" required />
+
+      <label>Mail</label>
+      <input type="email" name="email" required />
+
+      <label>Password</label>
+      <input type="password" name="password" required />
+
+      <div class="button-group">
+        <button type="submit" name="role" value="donor">Register as a Donor</button>
+        <button type="submit" name="role" value="recipient">Register as a Recipient</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

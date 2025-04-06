@@ -18,19 +18,13 @@ body {
   align-items: center;
 }
 
-/* #front {
-  width: 682px;
-  height: 982px;
-  float: right;
-  margin: 0px;
-} */
 .right {
   flex: 1;
-  background-image: url('pexels-badesaba-16002325.jpg'); 
+  background-image: url('/static/frontpage.jpg'); /* Adjusted path */
   background-size: cover;
   background-position: center;
   max-width: 35vw;
-} 
+}
 
 h1 {
   font-size: 3rem;
