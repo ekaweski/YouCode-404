@@ -10,27 +10,25 @@ body {
 
 .left {
   flex: 1;
-  background-color: #cbd3cb;
+  background-color: #C9D1CA;
   padding: 60px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.front {
+/* #front {
   width: 682px;
   height: 982px;
   float: right;
-
-}
-/* .right {
+  margin: 0px;
+} */
+.right {
   flex: 1;
   background-image: url('pexels-badesaba-16002325.jpg'); 
-  width: 100px;
-  height: 100px;
   background-size: cover;
   background-position: center;
-} */
+} 
 
 h1 {
   font-family: 'Sansita One', serif;
