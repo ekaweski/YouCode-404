@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField
@@ -50,26 +50,29 @@ def login_page():
 tempdata = {'title':'post', 'location':'ubc', 'date':'april second', 'time':'two pm', 
 'fooditems':['carrots', 'peas', 'grapes']}
 
-@app.route('/form_login',methods=['POST','GET'])
+@app.route('/form_login', methods=['POST', 'GET'])
 def login():
-    if request.method =='POST':
-
-        username1 = request.form['username']
-        password1 = request.form['password']
+    if request.method == 'POST':
+        username1 = request.form.get('username')
+        password1 = request.form.get('password')
 
         if username1 not in database:
-            return render_template('register.html',info='Invalid User')
-    
+            return render_template('register.html', info='Invalid User')
+
         if database[username1]['password'] != password1:
-            return render_template('login.html')
-    
-        user_role = database[username1]['role']
-        if user_role == 'recipient':
+            return render_template('login.html', info='Incorrect Password')
+
+        # ✅ Save user to session
+        session['username'] = username1
+        session['role'] = database[username1]['role']
+
+        if session['role'] == 'recipient':
             return redirect(url_for('recipient_redirect'))
         else:
             return render_template("home_donor.html")
-    
+
     return render_template('login.html')
+
     
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -133,7 +136,9 @@ def likes():
 
 @app.route('/logout')
 def logout():
+    session.clear()
     return render_template('login.html')
+
 
 
 if __name__ == '__main__':
