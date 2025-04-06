@@ -86,7 +86,7 @@ main {
 .image-box {
   width: 250px;
   height: 236px;
-  border: 4px solid git#173c25;
+  border: 4px solid #173c25;
   border-radius: 10px;
   background-color: white;
   display: flex;
