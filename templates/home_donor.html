@@ -8,11 +8,13 @@
 </head>
 <body>
   <header>
-    <img src="{{ url_for('static', filename='nibbl-logo.png') }}" alt="Nibbl Logo" class="logo">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Nibbl Logo" class="logo">
     <div class="header-buttons">
       <a href="{{url_for('login') }}"><button class="logout-btn">Log out</button></a>
-      <button class="icon-btn">
-        <img src="{{ url_for('static', filename='Vector.png') }}" alt="user icon" class="icon"></img></button>
+        </a>
+        <div class="icon">
+            <img src="{{ url_for('static', filename='Vector.png') }}" alt="User Icon">
+        </div>
     </div>
   </header>
 
@@ -20,15 +22,6 @@
     <h1>New post</h1>
     <form action="/post_upload" method="POST">
     <div class="post-form">
-      <div class="image-upload">
-        <label for="image-upload">
-          <div class="upload-placeholder">
-            <span class="upload-icon">+</span>
-            <span class="upload-text">Upload Image</span>
-          </div>
-        </label>
-        <input type="file" id="image-upload" hidden>
-      </div>
       <div class="post-details">
         <label>
           Post Name
