@@ -20,14 +20,14 @@ body {
 
 .right {
   flex: 1;
-  background-image: url('/static/frontpage.jpg'); /* Adjusted path */
+  background-image: url('/static/frontpage.jpg'); 
   background-size: cover;
   background-position: center;
   max-width: 35vw;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 6rem;
   color: #173c25;
   margin-bottom: 0px;
   font-family: "Sansita", sans-serif;
@@ -65,7 +65,7 @@ h1 {
 }
 
 .login-card input {
-  width: 100%;
+  width: 93%;
   padding: 10px;
   margin-bottom: 15px;
   border: none;
