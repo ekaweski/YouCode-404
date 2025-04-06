@@ -62,7 +62,6 @@ def login():
         if database[username1]['password'] != password1:
             return render_template('login.html', info='Incorrect Password')
 
-        # ✅ Save user to session
         session['username'] = username1
         session['role'] = database[username1]['role']
 
