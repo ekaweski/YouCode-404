@@ -9,16 +9,6 @@ body {
     height: 100vh;
   }
   
-  .register-container {
-    background-color: #d3d3d3;
-    padding: 2rem 3rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    width: 350px;
-    text-align: center;
-    border: 2px solid #007acc;
-  }
-  
   .register-container h1 {
     color: #0b2e13;
     margin-bottom: 1.5rem;
