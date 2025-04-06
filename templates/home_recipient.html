@@ -41,13 +41,13 @@ console.log({{ post }});
     <div class="nav-buttons">
 
     {% if prev_post %}
-      <a href="{{ url_for('recipients', post_id=prev_post.id) }}"><button class="back-btn">&#8592;</button></a>
+      <a href="{{ url_for('recipient', post_id=prev_post.id) }}"><button class="back-btn">&#8592;</button></a>
     {% endif %}
 
       <button class="munch-btn">Munch!</button>
 
       {% if next_post %}
-        <a href="{{ url_for('recipients', post_id=next_post.id) }}"><button class="next-btn">&#8594;</button></a>
+        <a href="{{ url_for('recipient', post_id=next_post.id) }}"><button class="next-btn">&#8594;</button></a>
       {% endif %}
     </div>
   </main>
