@@ -109,7 +109,7 @@ def donor():
         )
         db.session.add(new_post)
         db.session.commit()
-        return redirect(url_for('recipient_redirect'))
+        return render_template('home_donor.html')
     return render_template('home_donor.html', form=form)
 
 @app.route('/recipient/<int:post_id>')
