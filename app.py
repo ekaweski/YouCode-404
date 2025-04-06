@@ -20,7 +20,7 @@ class Post(db.Model):
     location = db.Column(db.String(200))
     date = db.Column(db.String(50))
     time = db.Column(db.String(50))
-    items = db.Column(db.String(100))
+    items = db.Column(db.Text(00))
     contact = db.Column(db.String(150))
 
 class PostForm(FlaskForm):
@@ -81,7 +81,12 @@ def register():
 
     database[username] = {'password': password, 'role': role}
 
-    return redirect(url_for('hello_world'))
+    if role == 'recipient':
+        return redirect(url_for('recipient_redirect'))
+    
+    else:
+        return render_template("home_donor.html")
+
 
 @app.route('/post_upload',methods=['POST','GET'])
 def donor():

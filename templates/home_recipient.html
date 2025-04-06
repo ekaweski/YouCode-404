@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ post.title }}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='home_donor.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='home_recipient.css') }}">
 </head>
 <body>
   <header>
@@ -19,7 +19,7 @@
     <script>  
     console.log("HELLO") 
 ;
-console.log({{ post }});
+console.log({{ postid }});
     </script>
     <div class="card">
       <div class="post-info">
