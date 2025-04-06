@@ -16,7 +16,7 @@
     <div class="left">
       <h1>Welcome to Nibbl …</h1>
       <div class="login-card">
-        <div class="icon">👤</div>
+        <div class="icon"><img src="{{ url_for('static',  filename='Vector.png' )}}"></img></div>
         <h2>Member Login</h2>
 
         <form action="/form_login" method="post">
@@ -27,7 +27,7 @@
         </form>
         <div class="create-account">
           Don’t have an account?<br />
-          <a href="{{ url_for('register') }}"><button>Create</button>
+          <a href="{{ url_for('register') }}"><button>Create</button> </a>
         </div>
       </div>
     </div>

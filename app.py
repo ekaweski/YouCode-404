@@ -29,12 +29,15 @@ def login():
     else:
         return render_template('home_donor.html',name=username1)
     
-@app.route('/register')
-def register():
-    return render_template("register.html")
+# @app.route('/register')
+# def register():
+#     return render_template("register.html")
 
-@app.route('/register', methods=['POST'])
-def handle_register():
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.method == 'GET':
+        return render_template("register.html")
+        
     full_name = request.form['full_name']
     username = request.form['username']
     email = request.form['email']
