@@ -10,11 +10,13 @@
   <header>
     <img src="{{ url_for('static', filename='logo.png') }}" alt="Nibbl Logo" class="logo">
     <div class="header-buttons">
-      <a href="#" class="liked-posts-btn">Liked Posts</a>
-      <a href="#" class="logout-btn">Log out <i class="icon">👤</i></a>
+      <button class="liked-posts-btn">Liked Posts</button>
+      <button class="logout-btn">Log out</button>
+      <button class="icon-btn">
+        <img src="{{ url_for('static', filename='Vector.png') }}" alt="user icon" class="icon"></img></button>
     </div>
-  </header>
 
+    </header>
   <main>
     <script>  
     console.log("HELLO") 
