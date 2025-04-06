@@ -118,3 +118,6 @@ main {
   font-size: 1rem;
   min-width: 80px;
 }
+.munch-btn:hover, .next-btn:hover, .back-btn:hover {
+  background-color: #718476;
+}
