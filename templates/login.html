@@ -14,9 +14,13 @@
       <div class="login-card">
         <div class="icon">👤</div>
         <h2>Member Login</h2>
-        <input type="text" placeholder="Username..." />
-        <input type="password" placeholder="Password..." />
-        <button>Login</button>
+
+        <form action="/form_login" method="post">
+        <input name="username" type="text" placeholder="Username..." />
+        <input name="password" type="password" placeholder="Password..." />
+        <button type="submit">Login</button>
+        </form>
+  
         <div class="create-account">
           Don’t have an account?<br />
           <button>Create</button>
