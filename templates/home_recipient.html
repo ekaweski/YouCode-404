@@ -1,12 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Detail</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='home_recipient.css') }}">
 </head>
-<body bgcolor="light green">
-<br>
-<h1 align="center">Welcome {{username}}, you are a recipient!</h1>  
+<body>
+  <header>
+    <img src="{{ url_for('static', filename='nibbl-logo.png') }}" alt="Nibbl Logo" class="logo">
+    <div class="header-buttons">
+      <a href="#" class="liked-posts-btn">Liked Posts</a>
+      <a href="#" class="logout-btn">Log out <i class="icon">👤</i></a>
+    </div>
+  </header>
 
+  <main>
+    <div class="card">
+      <div class="post-info">
+        <h1>Post Name</h1>
+        <p><strong>Location:</strong> 6133 University Blvd, Vancouver, BC V6T 1Z1</p>
+        <p><strong>Date:</strong> March 17, 2025</p>
+        <p><strong>Time:</strong> 6:00–7:00 pm</p>
+        <p><strong>Items Available:</strong></p>
+        <ul>
+          <li>Carrots</li>
+          <li>Peas</li>
+          <li>Honey</li>
+          <li>Grapes</li>
+          <li>Corn</li>
+          <li>Potatoes</li>
+          <li>Tomatoes</li>
+          <li>Matcha</li>
+        </ul>
+        <p><strong>Point of Contact:</strong> janedoe@foodmail.com or (431)-345-9008</p>
+      </div>
+      <div class="image-box">
+        <img src="{{ url_for('static', filename='post-image.png') }}" alt="Post Image">
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button class="back-btn">&#8592;</button>
+      <button class="munch-btn">Munch!</button>
+      <button class="next-btn">&#8594;</button>
+    </div>
+  </main>
 </body>
 </html>
