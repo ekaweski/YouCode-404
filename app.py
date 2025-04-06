@@ -31,6 +31,9 @@ class PostForm(FlaskForm):
     items = TextAreaField('Items', validators=[DataRequired()])
     contact = StringField('Contact Info', validators=[DataRequired()])
     submit = SubmitField('Post')
+    
+with app.app_context():
+    db.create_all()
 
 # Temporary in-memory user database
 database = {
@@ -60,9 +63,9 @@ def login():
     
     user_role = database[username1]['role']
     if user_role == 'recipient':
-        return render_template('home_recipient.html', name=username1, post=tempdata)
+        return redirect(url_for('recipient_redirect'))
     else:
-        return render_template('home_donor.html',name=username1)
+        return render_template("home_donor.html")
     
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -82,20 +85,20 @@ def register():
 
 @app.route('/post_upload',methods=['POST','GET'])
 def donor():
-    form = dict(request.form)
+    form = PostForm()
     if form:
         print(form, file=sys.stderr)
         new_post = Post(
-            title=form['posttitle'],
-            location=form['location'],
-            date=form['date'],
-            time=form['time'],
-            items=form['items'],
-            contact=form['contact']
+            title=form.title.data,
+            location=form.location.data,
+            date=form.date.data,
+            time=form.time.data,
+            items=form.items.data,
+            contact=form.contact.data
         )
         db.session.add(new_post)
         db.session.commit()
-        return redirect(url_for('recipient'))
+        return redirect(url_for('recipient_redirect'))
     return render_template('home_donor.html', form=form)
 
 @app.route('/recipient/<int:post_id>')
