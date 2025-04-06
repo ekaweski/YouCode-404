@@ -52,20 +52,24 @@ tempdata = {'title':'post', 'location':'ubc', 'date':'april second', 'time':'two
 
 @app.route('/form_login',methods=['POST','GET'])
 def login():
-    username1 = request.form['username']
-    password1 = request.form['password']
+    if request.method =='POST':
 
-    if username1 not in database:
-        return render_template('register.html',info='Invalid User')
+        username1 = request.form['username']
+        password1 = request.form['password']
+
+        if username1 not in database:
+            return render_template('register.html',info='Invalid User')
     
-    if database[username1]['password'] != password1:
-        return render_template('login.html')
+        if database[username1]['password'] != password1:
+            return render_template('login.html')
     
-    user_role = database[username1]['role']
-    if user_role == 'recipient':
-        return redirect(url_for('recipient_redirect'))
-    else:
-        return render_template("home_donor.html")
+        user_role = database[username1]['role']
+        if user_role == 'recipient':
+            return redirect(url_for('recipient_redirect'))
+        else:
+            return render_template("home_donor.html")
+    
+    return render_template('login.html')
     
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -122,6 +126,14 @@ def recipient_redirect():
     if first_post:
         return redirect(url_for('recipient', post_id=first_post.id))
     return "No posts available."
+
+@app.route('/liked_posts')
+def likes():
+    return render_template('liked.html')
+
+@app.route('/logout')
+def logout():
+    return render_template('login.html')
 
 
 if __name__ == '__main__':
