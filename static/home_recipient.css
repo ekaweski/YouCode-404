@@ -20,7 +20,7 @@ header {
 .header-buttons {
   display: flex;
   gap: 10px;
-  align-items: right;
+  align-items: center;
 }
 
 /* Pill-style buttons */

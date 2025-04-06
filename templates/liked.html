@@ -10,23 +10,27 @@
   <header>
     <img src="{{ url_for('static', filename='logo.png') }}" alt="Nibbl Logo" class="logo">
     <div class="header-buttons">
-      <a href="#" class="liked-posts-btn">Liked Posts</a>
-      <a href="#" class="logout-btn">Log out <div class="icon"><img src="{{ url_for('static',  filename='Vector.png' )}}"></img></div></a>
+      <a href="#" class="logout-btn">
+        Log out 
+        <div class="icon">
+        <img src="{{ url_for('static', filename='Vector.png') }}" alt="User Icon">
+        </div>
+      </a>
     </div>
-  </header>
+</header>
 
   <main>
       <h1><strong><em>Liked Postings</em></strong></h1>
       <div class="container">
         <div class="post-card">
-          <img src="image.png" alt="Post Image" />
+          <img src="/static/nest.png" alt="UBC Nest Food Drive" />
           <div class="post-name">Post Name</div>
         </div>
         <div class="post-card">
           <div class="placeholder">
-            <img src="https://img.icons8.com/ios-filled/50/1f3d2a/add-image.png" alt="Add Post" />
+            <img src="/static/Post 2.png" alt="Add Post" />
           </div>
-          <div class="post-name">Next Post Name</div>
+          <div class="post-name">Save on EOD Give Away</div>
         </div>
       </div>
       <div class="footer"></div>
