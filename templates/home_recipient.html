@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UBC Nest Food Drive!</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='home_recipient.css') }}">
+  <title>{{ post.title }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='home_donor.css') }}">
 </head>
 <body>
   <header>
@@ -18,31 +18,34 @@
   <main>
     <div class="card">
       <div class="post-info">
-        <h1>UBC Nest Food Drive</h1>
-        <p><strong>Location:</strong> 6133 University Blvd, Vancouver, BC V6T 1Z1</p>
-        <p><strong>Date:</strong> March 17, 2025</p>
-        <p><strong>Time:</strong> 6:00–7:00 pm</p>
+        <h1>{{ post.title }}</h1>
+        <p><strong>Location:</strong> {{ post.location }}</p>
+        <p><strong>Date:</strong> {{ post.date }}</p>
+        <p><strong>Time:</strong> {{ post.time }}</p>
         <p><strong>Items Available:</strong></p>
         <ul>
-          <li>Carrots</li>
-          <li>Peas</li>
-          <li>Honey</li>
-          <li>Grapes</li>
-          <li>Corn</li>
-          <li>Potatoes</li>
-          <li>Tomatoes</li>
-          <li>Matcha</li>
+          {% for item in post.items.split(',') %}
+            <li>{{ item.strip() }}</li>
+          {% endfor %}
         </ul>
-        <p><strong>Point of Contact:</strong> janedoe@foodmail.com or (431)-345-9008</p>
+        <p><strong>Point of Contact:</strong> {{ post.contact}}</p>
       </div>
       <div class="image-box">
         <img src="{{ url_for('static', filename='post-image.png') }}" alt="Post Image">
       </div>
     </div>
+
     <div class="nav-buttons">
-      <button class="back-btn">&#8592;</button>
+
+    {% if prev_post %}
+      <a href="{{ url_for('view_post', post_id=prev_post.id) }}"><button class="back-btn">&#8592;</button></a>
+    {% endif %}
+
       <button class="munch-btn">Munch!</button>
-      <button class="next-btn">&#8594;</button>
+
+      {% if next_post %}
+        <a href="{{ url_for('view_post', post_id=next_post.id) }}"><button class="next-btn">&#8594;</button></a>
+      {% endif %}
     </div>
   </main>
 </body>
