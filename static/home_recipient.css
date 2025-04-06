@@ -20,14 +20,14 @@ header {
 .header-buttons {
   display: flex;
   gap: 10px;
-  align-items: center;
+  align-items: right;
 }
 
 /* Pill-style buttons */
 .liked-posts-btn,
 .logout-btn {
   background-color: #ffffff;
-  color: #black;
+  color: black;
   border: none;
   padding: 8px 16px;
   border-radius: 20px;
