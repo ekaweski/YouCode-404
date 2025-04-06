@@ -31,10 +31,10 @@ class PostForm(FlaskForm):
     items = TextAreaField('Items', validators=[DataRequired()])
     contact = StringField('Contact Info', validators=[DataRequired()])
     submit = SubmitField('Post')
-    
+
 with app.app_context():
     db.create_all()
-
+    
 # Temporary in-memory user database
 database = {
     'ella': {'password': '123', 'role': 'donor'},
