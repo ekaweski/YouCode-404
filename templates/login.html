@@ -1,38 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Main Login Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
-<body bgcolor="light green">
-
-<h2>Login</h2>
-
-<form action="/form_login" method="post">
-    Username:<br>
-    <input type="text" name="username" required><br><br>
-
-    Password: <br>
-    <input type ="password" name="password" required><br><br>
-
-    Type of user: <br>
-    <label for="rcipient">
-        <input type="radio" id="recipient" name="user_choice" value="recipient" required>
-        Recipient
-    </label><br><br>
-
-    <label for="donor">
-        <input type="radio" id="donor" name="user_choice" value="donor">
-        Donor
-    </label><br><br>
-
-<input type="submit" Value="Login">
-</form>
-
-<h1>{{info}}</h1>
-
+<body>
+  <div class="container">
+    <div class="left">
+      <h1>Welcome to Nibbl …</h1>
+      <div class="login-card">
+        <div class="icon">👤</div>
+        <h2>Member Login</h2>
+        <input type="text" placeholder="Username..." />
+        <input type="password" placeholder="Password..." />
+        <button>Login</button>
+        <div class="create-account">
+          Don’t have an account?<br />
+          <button>Create</button>
+        </div>
+      </div>
+    </div>
+    <div class="right"> <img src= "pexels-badesaba-16002325.jpg" alt="load" class="front" > </div>
+  </div>
 </body>
 </html>
-
-
