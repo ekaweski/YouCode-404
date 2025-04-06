@@ -3,11 +3,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired
+import sys
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 db = SQLAlchemy(app)
 
@@ -18,7 +20,7 @@ class Post(db.Model):
     location = db.Column(db.String(200))
     date = db.Column(db.String(50))
     time = db.Column(db.String(50))
-    items = db.Column(db.Text)
+    items = db.Column(db.String(100))
     contact = db.Column(db.String(150))
 
 class PostForm(FlaskForm):
@@ -42,6 +44,9 @@ database = {
 def login_page():
     return render_template("login.html")
 
+tempdata = {'title':'post', 'location':'ubc', 'date':'april second', 'time':'two pm', 
+'fooditems':['carrots', 'peas', 'grapes']}
+
 @app.route('/form_login',methods=['POST','GET'])
 def login():
     username1 = request.form['username']
@@ -55,7 +60,7 @@ def login():
     
     user_role = database[username1]['role']
     if user_role == 'recipient':
-        return render_template('home_recipient.html', name=username1)
+        return render_template('home_recipient.html', name=username1, post=tempdata)
     else:
         return render_template('home_donor.html',name=username1)
     
@@ -75,17 +80,18 @@ def register():
 
     return redirect(url_for('hello_world'))
 
-@app.route('/donor', methods=['GET', 'POST'])
+@app.route('/post_upload',methods=['POST','GET'])
 def donor():
-    form = PostForm()
-    if form.validate_on_submit():
+    form = dict(request.form)
+    if form:
+        print(form, file=sys.stderr)
         new_post = Post(
-            title=form.title.data,
-            location=form.location.data,
-            date=form.date.data,
-            time=form.time.data,
-            items=form.items.data,
-            contact=form.contact.data
+            title=form['posttitle'],
+            location=form['location'],
+            date=form['date'],
+            time=form['time'],
+            items=form['items'],
+            contact=form['contact']
         )
         db.session.add(new_post)
         db.session.commit()

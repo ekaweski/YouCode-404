@@ -17,6 +17,7 @@
 
   <main class="new-post-container">
     <h1>New post</h1>
+    <form action="/post_upload" method="POST">
     <div class="post-form">
       <div class="image-upload">
         <label for="image-upload">
@@ -27,31 +28,35 @@
         </label>
         <input type="file" id="image-upload" hidden>
       </div>
-  
       <div class="post-details">
         <label>
           Post Name
-          <input type="text" placeholder="What...">
+          <input name='posttitle' type="text" placeholder="What...">
         </label>
         <label>
           Date
-          <input type="text" placeholder="dd/mm/yyyy">
+          <input name='date' type="text" placeholder="dd/mm/yyyy">
         </label>
         <label>
           Time
-          <input type="text" placeholder="x:xx ">
+          <input name='time' type="text" placeholder="x:xx ">
         </label>
         <label>
           Location
-          <input type="text" placeholder="Where...">
+          <input name='location' type="text" placeholder="Where...">
         </label>
         <label>
           Items Available
-          <textarea placeholder="Info..."></textarea>
+          <textarea name='items' type="text" placeholder="Info..."></textarea>
+        </label>
+        <label>
+          Contact
+          <input name='contact' type="text" placeholder="email..."></input>
         </label>
       </div>
     </div>
-    <button class="create-btn">Create</button>
+    <button type="submit" class="create-btn">Create</button>
+    </form>
   </main>
   
 </body>
